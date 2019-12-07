@@ -10,7 +10,7 @@ function tryOne (options) {
     backoff = retry.exponential(1.5),
     onRetry
   } = options;
-  return Promise.resolve(fn()).catch(error => {
+  return new Promise(resolve => resolve(fn())).catch(error => {
     if (attempt > retries) throw error
     if (onRetry) onRetry({ error, attempt, delay });
     return sleep(delay).then(() =>
