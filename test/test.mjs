@@ -1,6 +1,6 @@
 import test from 'ava'
 
-import retry from '../src'
+import retry from '../src/index.mjs'
 
 test('one that works', async t => {
   await retry(async () => {
