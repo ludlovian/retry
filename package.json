@@ -10,7 +10,7 @@
     "clean": "rm -rf node_modules/.cache/ coverage/",
     "format": "prettier-standard {src,test}/*.mjs",
     "lint": "standard {src,test}/*.mjs | snazzy",
-    "test": "c8 ava"
+    "test": "c8 uvu"
   },
   "repository": {
     "type": "git",
@@ -23,6 +23,6 @@
   },
   "homepage": "https://github.com/ludlovian/retry#readme",
   "devDependencies": {
-    "ava": "^3.15.0"
+    "uvu": "^0.5.1"
   }
 }

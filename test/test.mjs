@@ -1,14 +1,15 @@
-import test from 'ava'
+import { test } from 'uvu'
+import * as assert from 'uvu/assert'
 
 import retry from '../src/index.mjs'
 
-test('one that works', async t => {
+test('one that works', async () => {
   await retry(async () => {
-    t.pass()
+    assert.ok(true)
   })
 })
 
-test('one that passes eventually', async t => {
+test('one that passes eventually', async () => {
   let n = 0
   const err = new Error('oops')
   async function go () {
@@ -17,21 +18,27 @@ test('one that passes eventually', async t => {
   }
 
   const res = await retry(go, { retries: 3, delay: 100 })
-  t.is(res, 17)
+  assert.is(res, 17)
 })
 
-test('one that throws eventually', async t => {
+test('one that throws eventually', async () => {
   const err = new Error('oops')
 
   async function go () {
     throw err
   }
 
-  const e = await t.throwsAsync(retry(go, { retries: 1, delay: 100 }))
-  t.is(e, err)
+  await retry(go, { retries: 1, delay: 100 }).then(
+    () => {
+      assert.unreachable()
+    },
+    e => {
+      assert.is(e, err)
+    }
+  )
 })
 
-test('retry callback', async t => {
+test('retry callback', async () => {
   const callbacks = []
 
   let n = 0
@@ -42,15 +49,17 @@ test('retry callback', async t => {
   }
 
   function onRetry ({ error, attempt, delay }) {
-    t.is(error, err)
+    assert.is(error, err)
     callbacks.push([attempt, delay])
   }
 
   const res = await retry(go, { retries: 3, delay: 100, onRetry })
-  t.is(res, 17)
+  assert.is(res, 17)
 
-  t.deepEqual(callbacks, [
+  assert.equal(callbacks, [
     [1, 100],
     [2, 150]
   ])
 })
+
+test.run()
