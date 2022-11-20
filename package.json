@@ -1,6 +1,6 @@
 {
   "name": "retry",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "Retry",
   "main": "src/index.mjs",
   "module": "src/index.mjs",
