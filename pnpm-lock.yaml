@@ -1,0 +1,23 @@
+lockfileVersion: '9.0'
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
+importers:
+
+  .:
+    dependencies:
+      '@ludlovian/timeout':
+        specifier: github:ludlovian/timeout
+        version: https://codeload.github.com/ludlovian/timeout/tar.gz/fb96ee948180e5a55f47b136d728e74a7f0e7b0e
+
+packages:
+
+  '@ludlovian/timeout@https://codeload.github.com/ludlovian/timeout/tar.gz/fb96ee948180e5a55f47b136d728e74a7f0e7b0e':
+    resolution: {tarball: https://codeload.github.com/ludlovian/timeout/tar.gz/fb96ee948180e5a55f47b136d728e74a7f0e7b0e}
+    version: 0.2.0
+
+snapshots:
+
+  '@ludlovian/timeout@https://codeload.github.com/ludlovian/timeout/tar.gz/fb96ee948180e5a55f47b136d728e74a7f0e7b0e': {}
