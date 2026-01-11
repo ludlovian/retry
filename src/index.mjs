@@ -91,10 +91,11 @@ async function _retry ({
       ctx.verifyFailed = err instanceof FailedToVerify
       if (retryIf && !(await Promise.try(retryIf, err, ctx))) break
     }
-    // go around again
+    // go around again, unless we are out of chances
+    // we skip the for loop to avoid increasing attempt
+    if (ctx.attempt === attempts) break
   }
   // out of attempts - reject with most recent error
-  ctx.attempt = Math.min(ctx.attempt, attempts)
   ctx.err._retry = ctx
   reject(ctx.err)
 }
