@@ -67,8 +67,7 @@ async function _retry ({
       if (ctx.attempt > 1) {
         if (onRetry) await Promise.try(onRetry, ctx)
         if (log) {
-          log(ctx.err)
-          log('%s: Attempt #%d', context || 'Error', ctx.attempt)
+          log('%s\n%s: Attempt #%d', ctx.err, context || 'Error', ctx.attempt)
         }
         if (delay) await sleep(delay[ctx.attempt - 1])
       }

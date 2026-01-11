@@ -86,7 +86,7 @@ suite('retry', async () => {
     assert.equal(onRetryCount, 1)
     assert.equal(verifyCount, 1)
     assert.equal(retryIfCount, 1)
-    assert.equal(logCount, 2)
+    assert.equal(logCount, 1)
   })
 
   test('multiple failures results in failure', async t => {
