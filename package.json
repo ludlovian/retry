@@ -24,6 +24,6 @@
   },
   "homepage": "https://github.com/ludlovian/retry#readme",
   "dependencies": {
-    "@ludlovian/timeout": "link:../timeout"
+    "@ludlovian/timeout": "file:../timeout"
   }
 }
