@@ -1,6 +1,6 @@
 {
   "name": "@ludlovian/retry",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Retry async function",
   "main": "src/index.mjs",
   "exports": {
