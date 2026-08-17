@@ -81,6 +81,7 @@ async function _retry ({
         }
       }
       // if all goes well, we resolve & leave.
+      if (ctx.attempt > 1 && log) log('Attempt #%d succeeded', ctx.attempt)
       return resolve(result)
     } catch (err) {
       ctx.err = err
